@@ -78,8 +78,26 @@ public class GraphMatrix implements Graph {
     }
 
     public int countConnectedComponents() {
-
-        return -1;
+    	if(numVertices <= 1) { // Si los vertices son menores o igual a 1
+    		return numVertices; // Retornara el numero de vertices
+    	} else { // En caso contrario contara los comoponentes
+        	ArrayList<Integer> verticesGraph = new ArrayList<Integer>(); // ArrayList que almacenara los vertices
+    		int cont = 0; // Contador cantidad de componentes
+        	
+        	for (int i = 0; i < numVertices; i++) { // bucle for que añadira los vertices al arr
+        		verticesGraph.add(i);
+    		}
+        	
+        	do {
+        		ArrayList<Integer> graph = depthFirstSearch(verticesGraph.get(0));
+        		
+        		for (int i = 0; i < graph.size(); i++) {
+        			verticesGraph.remove(0);
+    				cont++;
+    			}
+        	} while(verticesGraph.size()>0);
+        	return cont;
+    	}
     }
 
     public static void main(String args[]) {
