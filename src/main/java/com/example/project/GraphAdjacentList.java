@@ -90,7 +90,22 @@ public class GraphAdjacentList implements Graph {
     }
 
     public boolean removeVertex(int vertex){
-        return false;
+        Vertex aux = null; // Auxiliar que sera el vertice a eliminar
+        for (int i = 0; i < vertices.size(); i++) { // Bucle que recorre los vertices
+			if(vertex == vertices.get(i).data) { // Si el vertice es igual al parametro
+				aux = vertices.get(i); // Auxiliar sera igual a ese vertice
+				break; // Y sale del bucle
+			}
+		}
+        
+        for (int i = 0; i < numVertices; i++) { // Recorre el numero de vertices
+			removeEdge(vertices.get(i).data, vertex); // Remueve los Edge
+		}
+        
+        vertices.remove(aux); //Remueve el vertice Auxiliar
+        numVertices--; //Disminuye el numero de vertices a 1
+        
+        return true; // Y retornara true 
     }
 
     public static void main(String args[]) {
