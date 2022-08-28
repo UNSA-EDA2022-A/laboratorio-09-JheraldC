@@ -95,7 +95,7 @@ public class GraphMatrix implements Graph {
         			verticesGraph.remove(0);
     				cont++;
     			}
-        	} while(verticesGraph.size()>0);
+        	} while(verticesGraph.size()!=0);
         	return cont;
     	}
     }
